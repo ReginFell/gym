@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf public/bundle.*",
-    "build": "webpack-dev-server NODE_ENV=development",
+    "build": "webpack-dev-server",
     "postinstall": "npm run clean && npm run build"
   },
   "author": "S.Zabelnykov",
   "license": "ISC",
-  "devDependencies": {
+  "dpendencies": {
     "axios": "^0.18.0",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
