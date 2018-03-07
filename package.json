@@ -6,11 +6,12 @@
   "scripts": {
     "clean": "rimraf public/bundle.*",
     "build": "webpack-dev-server",
+    "start": "node server.js",
     "postinstall": "npm run clean && npm run build"
   },
   "author": "S.Zabelnykov",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "axios": "^0.18.0",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
@@ -25,5 +26,8 @@
     "webpack": "^4.1.0",
     "webpack-dev-server": "^3.0.0",
     "webpack-cli": "^2.0.4"
+  },
+  "dependencies": {
+    "express": "^4.16.2"
   }
 }
