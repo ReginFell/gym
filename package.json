@@ -2,12 +2,11 @@
   "name": "kak-dela-v-kachalke",
   "version": "1.0.0",
   "description": "Application for making notes about your gym progress",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "clean": "rimraf public/bundle.*",
     "build": "webpack",
-    "start": "node server",
-    "postinstall": "npm run clean && npm run build && npm run start"
+    "start": "npm run build && node server",
   },
   "author": "S.Zabelnykov",
   "license": "ISC",
