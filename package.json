@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf public/bundle.*",
-    "build": "webpack-dev-server",
+    "build": "webpack-dev-server NODE_ENV=development",
     "postinstall": "npm run clean && npm run build"
   },
   "author": "S.Zabelnykov",
