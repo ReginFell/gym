@@ -4,7 +4,9 @@
   "description": "Application for making notes about your gym progress",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server"
+    "clean": "rimraf public/bundle.*",
+    "build": "cross-env NODE_ENV=production webpack --config ./webpack.prod.config.js --progress --colors",
+    "postinstall": "npm run clean && npm run build"
   },
   "author": "S.Zabelnykov",
   "license": "ISC",
