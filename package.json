@@ -7,7 +7,7 @@
     "clean": "rimraf public/bundle.*",
     "build": "webpack-dev-server",
     "start": "node server.js",
-    "postinstall": "npm run clean && npm run build"
+    "postinstall": "npm run clean && npm run start && npm run build "
   },
   "author": "S.Zabelnykov",
   "license": "ISC",
