@@ -2,8 +2,8 @@ module.exports = {
     entry: './app.js',
     mode: 'production',
     output: {
-        path: __dirname,
-        filename: './bundle.js'
+        filename: 'bundle.js',
+        path: __dirname + '/build'
     },
     resolve: {
         alias: {},

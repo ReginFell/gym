@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf public/bundle.*",
-    "build": "webpack-dev-server",
-    "start": "node server.js",
-    "postinstall": "npm run clean && npm run start && npm run build "
+    "build": "webpack",
+    "start": "node server",
+    "postinstall": "npm run clean && npm run build && npm run start"
   },
   "author": "S.Zabelnykov",
   "license": "ISC",
