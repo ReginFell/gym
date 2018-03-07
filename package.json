@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rimraf public/bundle.*",
     "build": "webpack",
-    "start": "npm run build && node server"
+    "start": "node server"
   },
   "author": "S.Zabelnykov",
   "license": "ISC",
