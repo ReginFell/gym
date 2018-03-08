@@ -35,7 +35,7 @@
         },
         methods: {
             addItem() {
-                let uri = 'https://gym-back.herokuapp.com/items/add';
+                let uri = process.env.API_URL + "/items/add";
                 console.log(this.item);
                 this.axios.post(uri, this.item).then((response) => {
                     console.log(response)
