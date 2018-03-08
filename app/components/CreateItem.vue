@@ -1,33 +1,33 @@
 <template>
-    <div>
-        <h1>Create An Item</h1>
+    <div align="center">
+        <Logo class="icon" width="320" height="255"/>
+        <h1>Login</h1>
         <form v-on:submit.prevent="addItem">
             <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Item Name:</label>
-                        <input type="text" class="form-control" v-model="item.name">
-                    </div>
+                <div class="form-group col-xs-2" align="center">
+                    <label>Username</label>
+                    <input type="text" class="form-control input-sm" v-model="item.login">
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Item Price:</label>
-                        <input type="text" class="form-control col-md-6" v-model="item.price">
-                    </div>
+                <div class="form-group col-xs-2" align="center">
+                    <label>Password</label>
+                    <input type="text" class="form-control input-sm" v-model="item.password">
                 </div>
             </div>
             <br/>
             <div class="form-group">
-                <button class="btn btn-primary">Add Item</button>
+                <button class="btn btn-primary">Login</button>
             </div>
         </form>
     </div>
 </template>
 
 <script>
+    import Logo from '../resources/logo.svg';
+
     export default {
+        components: {Logo},
         data() {
             return {
                 item: {}
@@ -35,11 +35,14 @@
         },
         methods: {
             addItem() {
-                let uri = 'http://localhost:4000/items/add';
+                let uri = 'https://gym-back.herokuapp.com/items/add';
+                console.log(this.item);
                 this.axios.post(uri, this.item).then((response) => {
                     console.log(response)
                 })
             }
         }
     }
+
+
 </script>
