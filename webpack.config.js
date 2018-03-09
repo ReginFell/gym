@@ -3,7 +3,7 @@ module.exports = {
     mode: 'production',
     output: {
         filename: 'bundle.js',
-        path: __dirname + '/build'
+        path: __dirname
     },
     resolve: {
         alias: {},
