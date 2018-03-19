@@ -1,9 +1,14 @@
+const webpack = require('webpack');
+
 module.exports = {
-    entry: './app.js',
+    entry: [
+        'react-hot-loader/patch',
+        './src/index.js'
+    ],
     mode: 'production',
     output: {
         filename: 'bundle.js',
-        path: __dirname
+        path: __dirname + "/public"
     },
     resolve: {
         alias: {},
@@ -14,19 +19,19 @@ module.exports = {
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
+                query: {
+                    presets: ['es2015', 'react']
+                },
                 exclude: /node_modules/
-            },
-            {
-                test: /\.vue$/,
-                exclude: /(node_modules|bower_components)/,
-                use: {
-                    loader: 'vue-loader'
-                }
-            },
-            {
-                test: /\.svg$/,
-                loader: 'vue-svg-loader'
+            }, {
+                test: /\.scss$/,
+                loaders: ['style-loader', 'css-loader', 'sass-loader'],
             }
         ]
-    },
+    }, plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ],
+    devServer: {
+        contentBase: "./public"
+    }
 };
