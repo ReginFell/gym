@@ -2,8 +2,8 @@ module.exports = {
     entry: './app.js',
     mode: 'production',
     output: {
-        path: __dirname,
-        filename: './bundle.js'
+        filename: 'bundle.js',
+        path: __dirname
     },
     resolve: {
         alias: {},
@@ -22,6 +22,10 @@ module.exports = {
                 use: {
                     loader: 'vue-loader'
                 }
+            },
+            {
+                test: /\.svg$/,
+                loader: 'vue-svg-loader'
             }
         ]
     },

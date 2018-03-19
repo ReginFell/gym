@@ -1,25 +1,19 @@
 import Vue from 'vue';
-
-import App from './app/App.vue';
-import CreateItem from './app/components/CreateItem.vue';
-
-import VueRouter from 'vue-router';
-
-Vue.use(VueRouter);
-
+import Router from 'vue-router';
 import VueAxios from 'vue-axios';
-
 import axios from 'axios';
 
-Vue.use(VueAxios, axios);
+import App from './src//App.vue';
+import Authorization from './src/components/auth/Authorization.vue';
+import Registration from './src/components/auth/Registration.vue';
 
 const routes = [
-    {
-        name: 'CreateItem',
-        path: '/',
-        component: CreateItem
-    }
+    {path: '/', component: Authorization},
+    {path: '/registration', component: Registration}
 ];
 
-const router = new VueRouter({ mode: 'history', routes: routes});
-new Vue(Vue.util.extend({ router }, App)).$mount('#app');
+Vue.use(VueAxios, axios);
+Vue.use(Router);
+
+const router = new Router({ routes: routes});
+new Vue(Vue.util.extend({router}, App)).$mount('#app');
