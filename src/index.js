@@ -3,7 +3,7 @@ import "bootstrap/scss/bootstrap.scss"
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Login from './containers/login/Login';
+import Login from 'Containers/login/Login';
 
 ReactDOM.render(
     <Login />,
