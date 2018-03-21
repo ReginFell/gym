@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "Application for making notes about your gym progress",
   "scripts": {
-    "clean": "rimraf public/bundle.*",
     "build": "webpack",
     "start:dev": "webpack-dev-server",
-    "start": "react-scripts start"
+    "start": "node server"
   },
   "author": "S.Zabelnykov",
   "license": "ISC",
