@@ -1,16 +1,17 @@
 import React from 'react';
 import {InputGroup, Row, Col, Button, Container, Input} from 'reactstrap';
-import Logo from 'Resources/logo.svg';
+import Logo from 'Resources/logo.nsvg';
+import './Login.css';
 
 import CenterView from 'Components/global/CenterView'
 
 class App extends React.Component {
     render() {
         return (
-            <Container>
+            <Container className="App">
                 <br/>
                 <CenterView>
-                    <Logo/>
+                    <Logo className="App-logo"/>
                 </CenterView>
                 <CenterView>
                     <InputGroup>
@@ -29,7 +30,7 @@ class App extends React.Component {
                 </CenterView>
                 <CenterView>
                     <div className="text-center">
-                        <b> Ну или </b>
+                        <p> Ну или </p>
                     </div>
                 </CenterView>
                 <CenterView>

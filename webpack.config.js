@@ -6,7 +6,7 @@ module.exports = {
         'react-hot-loader/patch',
         './src/index.js'
     ],
-    mode: 'production',
+    mode: 'development',
     output: {
         filename: 'bundle.js',
         path: __dirname + "/public"
@@ -32,8 +32,17 @@ module.exports = {
                 test: /\.scss$/,
                 loaders: ['style-loader', 'css-loader', 'sass-loader'],
             }, {
-                test: /\.svg$/,
+                test: /\.css$/,
+                loaders: ['style-loader', 'css-loader'],
+            }, {
+                test: /\.nsvg$/,
                 use: ['react-svg-loader']
+            }, {
+                test: /\.svg/,
+                use: {
+                    loader: 'svg-url-loader',
+                    options: {}
+                }
             }
         ]
     }, plugins: [

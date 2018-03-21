@@ -6,9 +6,9 @@ export default class CenterView extends React.Component {
         return (
             <Container>
                 <Row>
-                    <Col xs={{size: 10, offset: 1}}
-                         md={{size: 3, offset: 6}}
-                         lg={{size: 3, offset: 5}}>{this.props.children}</Col>
+                    <Col xs={{size: 12, offset: 0}}
+                         md={{size: 6, offset: 3}}
+                         lg={{size: 4, offset: 4}}>{this.props.children}</Col>
                 </Row>
             </Container>
         )
