@@ -6,7 +6,7 @@ module.exports = {
         'react-hot-loader/patch',
         './src/index.js'
     ],
-    mode: 'development',
+    mode: 'production',
     output: {
         filename: 'bundle.js',
         path: __dirname + "/public"
