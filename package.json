@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Application for making notes about your gym progress",
   "scripts": {
-    "build": "react-scripts build",
+    "clean": "rimraf public/bundle.*",
+    "build": "webpack",
     "start:dev": "webpack-dev-server",
     "start": "react-scripts start"
   },
@@ -29,7 +30,6 @@
     "loadable-components": "^1.1.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-scripts": "1.1.1",
     "react-helmet": "^5.2.0",
     "react-hot-loader": "^4.0.0",
     "react-redux": "^5.0.7",
