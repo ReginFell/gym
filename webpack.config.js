@@ -14,6 +14,7 @@ module.exports = {
     resolve: {
         alias: {
             Containers: path.resolve(__dirname, 'src/containers/'),
+            Resources: path.resolve(__dirname, 'src/resources/'),
             Components: path.resolve(__dirname, 'src/components/')
         },
         extensions: ['.js', '.jsx']
@@ -30,6 +31,9 @@ module.exports = {
             }, {
                 test: /\.scss$/,
                 loaders: ['style-loader', 'css-loader', 'sass-loader'],
+            }, {
+                test: /\.svg$/,
+                use: ['react-svg-loader']
             }
         ]
     }, plugins: [

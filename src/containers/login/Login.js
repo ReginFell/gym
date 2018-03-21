@@ -1,39 +1,40 @@
 import React from 'react';
-import {InputGroup, Row, Col, Button, Container, InputGroupAddon, Input} from 'reactstrap';
+import {InputGroup, Row, Col, Button, Container, Input} from 'reactstrap';
+import Logo from 'Resources/logo.svg';
+
+import CenterView from 'Components/global/CenterView'
 
 class App extends React.Component {
     render() {
         return (
             <Container>
                 <br/>
-                <Row>
-                    <Col xs={1} sm={{size: 5, order: 2, offset: 3}}>
-                        <InputGroup>
-                            <InputGroupAddon addonType="prepend">@</InputGroupAddon>
-                            <Input placeholder="Email"/>
-                        </InputGroup>
-                    </Col>
-                </Row>
+                <CenterView>
+                    <Logo/>
+                </CenterView>
+                <CenterView>
+                    <InputGroup>
+                        <Input placeholder="Email"/>
+                    </InputGroup>
+                </CenterView>
                 <br/>
-                <Row>
-                    <Col xs={6} sm={{size: 5, order: 2, offset: 3}}>
-                        <InputGroup>
-                            <Input placeholder="Password"/>
-                        </InputGroup>
-                    </Col>
-                </Row>
+                <CenterView>
+                    <InputGroup>
+                        <Input placeholder="Password"/>
+                    </InputGroup>
+                </CenterView>
                 <br/>
-                <Row>
-                    <Col xs={6} sm={{size: 2, order: 1, offset: 3}}>
-                        <Button color="primary"  block>Login</Button>
-                    </Col>
-                    <Col xs={6} sm={{size: 2, order: 2, offset: 3}}>
-                        <span> OR </span>
-                    </Col>
-                    <Col xs={6} sm={{size: 2, order: 3, offset: 3}}>
-                        <Button color="info"  block>Register</Button>
-                    </Col>
-                </Row>
+                <CenterView>
+                    <Button color="primary" block>Авторизация</Button>
+                </CenterView>
+                <CenterView>
+                    <div className="text-center">
+                        <b> Ну или </b>
+                    </div>
+                </CenterView>
+                <CenterView>
+                    <Button color="info" block>Регистрация</Button>
+                </CenterView>
             </Container>
         );
     }
