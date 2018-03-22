@@ -4,7 +4,7 @@ const path = require('path');
 module.exports = {
     entry: [
         'react-hot-loader/patch',
-        './src/index.js'
+        './src/App.js'
     ],
     mode: 'development',
     output: {
@@ -15,7 +15,11 @@ module.exports = {
         alias: {
             Containers: path.resolve(__dirname, 'src/containers/'),
             Resources: path.resolve(__dirname, 'src/resources/'),
-            Components: path.resolve(__dirname, 'src/components/')
+            Components: path.resolve(__dirname, 'src/components/'),
+            Reducers: path.resolve(__dirname, 'src/reducers/'),
+            Utils: path.resolve(__dirname, 'src/utils/'),
+            ActionTypes: path.resolve(__dirname, 'src/constants/ActionTypes'),
+            Actions: path.resolve(__dirname, 'src/actions/'),
         },
         extensions: ['.js', '.jsx']
     },
