@@ -19,8 +19,8 @@ export default (state = initialState, {type, payload}) => {
             };
         case LOGIN:
             return {
-                isEmailValid: false,
-                isPasswordValid: false
+                isEmailValid: true,
+                isPasswordValid: true
             };
         default:
             return state;
