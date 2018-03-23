@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux'
+import {Redirect} from 'react-router-dom';
 import {InputGroup, Button, Container, Progress, Input} from 'reactstrap';
 import Logo from 'Resources/logo.nsvg';
 import './Login.css';
@@ -12,17 +13,30 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {email: '', password: ''};
+        this.state = {
+            email: '',
+            password: '',
+            redirect: false
+        };
 
         this.login = this.login.bind(this);
+        this.handleRegistrationClick = this.handleRegistrationClick.bind(this);
     }
 
     login() {
         this.props.login(this.state.email, this.state.password);
-        this.props.history.push('/dashboard');
     }
 
+    handleRegistrationClick() {
+        this.state.redirect = true;
+    };
+
     render() {
+        if (this.state.redirect) {
+            console.log(this.state.redirect);
+            return <Redirect to="/registration" push={true}/>
+        }
+
         return (
             <Container className="App">
                 <br/>
@@ -46,14 +60,13 @@ class Login extends React.Component {
                     <Button color="primary" onClick={this.login} block>Авторизация</Button>
                 </CenterView>
                 <CenterView>
-                    <Progress bar animated color="success" value="100">Animated Stripes</Progress>
                     <div className="text-center">
                         Token: {this.props.token}
                         AuthError: {this.props.authError}
                     </div>
                 </CenterView>
                 <CenterView>
-                    <Button color="info" block>Регистрация</Button>
+                    <Button color="info" onClick={this.handleRegistrationClick} block>Регистрация</Button>
                 </CenterView>
             </Container>
         );
