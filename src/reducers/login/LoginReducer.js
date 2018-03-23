@@ -1,26 +1,27 @@
-import {LOGIN, LOGIN_EMAIL_VALIDATION_FAILED, LOGIN_PASSWORD_VALIDATION_FAILED} from 'ActionTypes'
+import {Map} from 'immutable';
+
+import {
+    LOGIN_SUCCESS,
+    LOGIN_ERROR
+} from 'Constants/ActionTypes'
 
 const initialState = {
-    isEmailValid: true,
-    isPasswordValid: true
+    authError: "",
+    token: ""
 };
 
 export default (state = initialState, {type, payload}) => {
+    console.log(payload);
     switch (type) {
-        case LOGIN_EMAIL_VALIDATION_FAILED:
+        case LOGIN_SUCCESS:
             return {
-                isEmailValid: false,
-                isPasswordValid: state.isEmailValid
+                authError: "",
+                token: payload
             };
-        case LOGIN_PASSWORD_VALIDATION_FAILED:
+        case LOGIN_ERROR:
             return {
-                isEmailValid: state.isEmailValid,
-                isPasswordValid: false
-            };
-        case LOGIN:
-            return {
-                isEmailValid: true,
-                isPasswordValid: true
+                authError: payload,
+                token: ""
             };
         default:
             return state;

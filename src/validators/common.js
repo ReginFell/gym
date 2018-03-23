@@ -1,9 +1,14 @@
-export const validate = values => {
-    const errors = {};
-    if (!values.text) {
-        errors.text = 'Поле обязательно для заполнения!';
-    } else if (values.text.length < 6) {
-        errors.text = 'Текст должен быть не менее 15 символов!'
-    }
-    return errors
-};
+function validateEmail(email) {
+    let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
+function validatePassword(password) {
+    return String(password).length >= 6;
+}
+
+function validatePasswordMatch(password, passwordConfirm) {
+    return password === passwordConfirm;
+}
+
+module.exports = {validateEmail, validatePassword, validatePasswordMatch};

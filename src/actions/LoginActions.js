@@ -1,20 +1,13 @@
-import * as types from 'ActionTypes';
+import * as types from 'Constants/ActionTypes'
 
-export function login(email, password) {
-    if (!email) {
-        return {
-            type: types.LOGIN_EMAIL_VALIDATION_FAILED,
-            email
-        };
-    }
-    if (!password) {
-        return {
-            type: types.LOGIN_PASSWORD_VALIDATION_FAILED,
-            password
-        };
-    }
-    return {
-        type: types.LOGIN,
-        email
-    };
-}
+import api from 'Api/index'
+
+export const login = (email, password) => dispatch => {
+    api.auth.signIn(email, password)
+        .then((res) => {
+            dispatch({type: types.LOGIN_SUCCESS, payload: res.data.token})
+        })
+        .catch((error) => {
+            dispatch({type: types.LOGIN_ERROR, payload: error.toString()})
+        });
+};

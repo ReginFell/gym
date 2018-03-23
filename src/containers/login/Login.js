@@ -26,7 +26,7 @@ class Login extends React.Component {
             <Container className="App">
                 <br/>
                 <CenterView>
-                    <Logo/>
+
                 </CenterView>
                 <CenterView>
                     <InputGroup>
@@ -36,20 +36,22 @@ class Login extends React.Component {
                 <br/>
                 <CenterView>
                     <InputGroup>
-                        <Input onChange={(event) => this.state.password = event.target.value} placeholder="Password"/>
+                        <Input type="password" onChange={(event) => this.state.password = event.target.value}
+                               placeholder="Password"/>
                     </InputGroup>
                 </CenterView>
                 <br/>
                 <CenterView>
-                    <Button color="primary" block>Авторизация</Button>
+                    <Button color="primary" onClick={this.login} block>Авторизация</Button>
                 </CenterView>
                 <CenterView>
                     <div className="text-center">
-                        <p> email: {this.props.isEmailValid.toString()} password: {this.props.isPasswordValid.toString()} </p>
+                        Token: {this.props.token}
+                        AuthError: {this.props.authError}
                     </div>
                 </CenterView>
                 <CenterView>
-                    <Button color="info" onClick={this.login} block>Регистрация</Button>
+                    <Button color="info" block>Регистрация</Button>
                 </CenterView>
             </Container>
         );
@@ -58,8 +60,8 @@ class Login extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        isEmailValid: state.login.isEmailValid,
-        isPasswordValid: state.login.isPasswordValid
+        authError: state.login.authError,
+        token: state.login.token
     };
 };
 

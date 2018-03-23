@@ -17,9 +17,10 @@ module.exports = {
             Resources: path.resolve(__dirname, 'src/resources/'),
             Components: path.resolve(__dirname, 'src/components/'),
             Reducers: path.resolve(__dirname, 'src/reducers/'),
-            Utils: path.resolve(__dirname, 'src/utils/'),
-            ActionTypes: path.resolve(__dirname, 'src/constants/ActionTypes'),
+            Validators: path.resolve(__dirname, 'src/validators/'),
+            Constants: path.resolve(__dirname, 'src/constants/'),
             Actions: path.resolve(__dirname, 'src/actions/'),
+            Api: path.resolve(__dirname, 'src/api/'),
         },
         extensions: ['.js', '.jsx']
     },

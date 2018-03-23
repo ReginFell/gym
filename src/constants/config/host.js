@@ -1,0 +1,1 @@
+export default 'https://gym-back.herokuapp.com/';
