@@ -26,7 +26,7 @@ class Login extends React.Component {
             <Container className="App">
                 <br/>
                 <CenterView>
-
+                    <Logo/>
                 </CenterView>
                 <CenterView>
                     <InputGroup>
