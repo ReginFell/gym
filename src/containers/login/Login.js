@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import {InputGroup, Button, Container, Input} from 'reactstrap';
+import {InputGroup, Button, Container, Progress, Input} from 'reactstrap';
 import Logo from 'Resources/logo.nsvg';
 import './Login.css';
 import {login} from "Actions/LoginActions";
@@ -18,7 +18,8 @@ class Login extends React.Component {
     }
 
     login() {
-        this.props.login(this.state.email, this.state.password)
+        this.props.login(this.state.email, this.state.password);
+        this.props.history.push('/dashboard');
     }
 
     render() {
@@ -45,6 +46,7 @@ class Login extends React.Component {
                     <Button color="primary" onClick={this.login} block>Авторизация</Button>
                 </CenterView>
                 <CenterView>
+                    <Progress bar animated color="success" value="100">Animated Stripes</Progress>
                     <div className="text-center">
                         Token: {this.props.token}
                         AuthError: {this.props.authError}
@@ -60,6 +62,7 @@ class Login extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
+        isLoading: state.login.isLoading,
         authError: state.login.authError,
         token: state.login.token
     };
