@@ -5,7 +5,11 @@ const app = express();
 
 const publicPath = express.static(path.join(__dirname, 'public'));
 
-app.use('/*', publicPath);
+app.use('/', publicPath);
+
+app.get('/*', function (req, res) {
+   res.sendFile(path.join(__dirname, 'public', 'index.html'));
+ });
 
 let port = process.env.PORT || 5000;
 app.listen(port, () => {
