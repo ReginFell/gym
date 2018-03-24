@@ -3,12 +3,10 @@ const express = require('express');
 
 const app = express();
 
-const publicPath = express.static(path.join(__dirname, 'public'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public/bundle.js')));
 
-app.use('/', publicPath);
-app.use('/bundle', publicPath+'/bundle.js');
-
-app.get('*', function (_, res) { res.sendFile('public/index.html') });
+app.get('/*', function (_, res) { res.sendFile(path.join(__dirname, '/public/index.html')) });
 
 let port = process.env.PORT || 5000;
 app.listen(port, () => {
