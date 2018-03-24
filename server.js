@@ -5,10 +5,9 @@ const app = express();
 
 const publicPath = express.static(path.join(__dirname, 'public'));
 
-app.use('/*', 
-publicPath);
+app.use('/', publicPath);
+app.use('/bundle', publicPath+'/bundle.js');
 
-app.get('*', function (_, res) { res.sendFile('public/index.html') });
 
 let port = process.env.PORT || 5000;
 app.listen(port, () => {
