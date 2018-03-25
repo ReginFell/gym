@@ -31,8 +31,10 @@ module.exports = {
                 test: /\.js$/,
                 loader: 'babel-loader',
                 query: {
+                    plugins: ['babel-plugin-transform-decorators-legacy', 'babel-plugin-transform-decorators'],
                     presets: ['es2015', 'react']
                 },
+
                 exclude: /node_modules/
             }, {
                 test: /\.scss$/,

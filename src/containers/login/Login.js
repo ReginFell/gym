@@ -4,11 +4,9 @@ import {InputGroup, Button, Container, Input} from 'reactstrap';
 import Logo from 'Resources/logo.nsvg';
 import './Login.css';
 import {login} from "Actions/login/LoginActions";
-import { withRouter } from 'react-router-dom'
 
 import CenterView from 'Components/global/CenterView'
 
-@withRouter
 @connect(state => ({
     isLoading: state.login.isLoading,
     authError: state.login.authError

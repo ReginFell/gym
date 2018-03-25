@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {Button} from 'reactstrap';
 import {logout} from "Actions/dashboard/DashboardActions";
 
+@connect(null, {logout: logout})
 class Dashboard extends React.Component {
 
     constructor(props) {
@@ -21,8 +22,4 @@ class Dashboard extends React.Component {
     }
 }
 
-const mapActionsToProps = {
-    logout: logout
-};
-
-export default connect(null, mapActionsToProps)(Dashboard);
+export default Dashboard;

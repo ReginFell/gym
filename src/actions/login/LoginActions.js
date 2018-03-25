@@ -7,7 +7,7 @@ export const login = (email, password) => dispatch => {
         .then((res) => {
             localStorage.setItem('token', res.data.token);
             dispatch({type: types.LOGIN_SUCCESS, payload: res.data.token})
-            dispatch(push('/login'))
+            dispatch(push('/dashboard'))
         })
         .catch((error) => {
             dispatch({type: types.LOGIN_ERROR, payload: error.toString()})

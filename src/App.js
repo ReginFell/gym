@@ -25,7 +25,7 @@ const store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk, b
 
 ReactDOM.render(
     <Provider store={store}>
-        <ConnectedRouter history={createHistory()}>
+        <ConnectedRouter history={history}>
             <Switch>
                 <Route exact path="/" component={Home}/>
                 <Route exact path="/signin" component={Login}/>
