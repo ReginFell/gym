@@ -1,13 +1,18 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import {Redirect} from 'react-router-dom';
-import {InputGroup, Button, Container, Progress, Input} from 'reactstrap';
+import {InputGroup, Button, Container, Input} from 'reactstrap';
 import Logo from 'Resources/logo.nsvg';
 import './Login.css';
-import {login} from "Actions/LoginActions";
+import {login} from "Actions/login/LoginActions";
+import { withRouter } from 'react-router-dom'
 
 import CenterView from 'Components/global/CenterView'
 
+@withRouter
+@connect(state => ({
+    isLoading: state.login.isLoading,
+    authError: state.login.authError
+}), {login: login})
 class Login extends React.Component {
 
     constructor(props) {
@@ -15,8 +20,7 @@ class Login extends React.Component {
 
         this.state = {
             email: '',
-            password: '',
-            redirect: false
+            password: ''
         };
 
         this.login = this.login.bind(this);
@@ -28,15 +32,10 @@ class Login extends React.Component {
     }
 
     handleRegistrationClick() {
-        this.state.redirect = true;
+        this.props.history.push('/registration')
     };
 
     render() {
-        if (this.state.redirect) {
-            console.log(this.state.redirect);
-            return <Redirect to="/registration" push={true}/>
-        }
-
         return (
             <Container className="App">
                 <br/>
@@ -61,7 +60,6 @@ class Login extends React.Component {
                 </CenterView>
                 <CenterView>
                     <div className="text-center">
-                        Token: {this.props.token}
                         AuthError: {this.props.authError}
                     </div>
                 </CenterView>
@@ -73,16 +71,4 @@ class Login extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        isLoading: state.login.isLoading,
-        authError: state.login.authError,
-        token: state.login.token
-    };
-};
-
-const mapActionsToProps = {
-    login: login
-};
-
-export default connect(mapStateToProps, mapActionsToProps)(Login);
+export default Login;

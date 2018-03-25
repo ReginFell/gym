@@ -1,31 +1,25 @@
-import {Map} from 'immutable';
-
 import {
     LOADING,
     LOGIN_SUCCESS,
-    LOGIN_ERROR
+    LOGIN_ERROR, TO_REGISTRATION, REDIRECTED
 } from 'Constants/ActionTypes'
 
 const initialState = {
     isLoading: false,
-    authError: "",
-    token: ""
+    authError: ""
 };
 
 export default (state = initialState, {type, payload}) => {
-    console.log(payload);
     switch (type) {
         case LOGIN_SUCCESS:
             return {
                 isLoading: false,
-                authError: "",
-                token: payload
+                authError: ""
             };
         case LOGIN_ERROR:
             return {
                 isLoading: false,
                 authError: payload,
-                token: ""
             };
         case LOADING:
             return initialState;

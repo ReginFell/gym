@@ -3,8 +3,9 @@ const path = require('path');
 
 module.exports = {
     entry: [
+        'webpack-hot-middleware/client?quiet=true',
         'react-hot-loader/patch',
-        './src/App.js',
+        './src/App.js'
     ],
     mode: 'development',
     output: {

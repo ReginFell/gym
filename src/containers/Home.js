@@ -1,8 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom';
 
-import {isLogged} from 'Actions/LoginActions';
+import {isLogged} from 'Actions/AppActions';
 
 class App extends React.Component {
     componentDidMount() {
@@ -14,7 +13,7 @@ class App extends React.Component {
     }
 
     render() {
-        return <Redirect to="/signin" push={true}/>
+        return <div/>
     }
 }
 
