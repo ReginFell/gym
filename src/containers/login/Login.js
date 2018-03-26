@@ -1,11 +1,25 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import {InputGroup, Button, Container, Input} from 'reactstrap';
 import Logo from 'Resources/logo.nsvg';
 import './Login.css';
 import {login} from "Actions/login/LoginActions";
+import Button from 'material-ui/Button';
+import Grid from 'material-ui/Grid';
+import TextField from 'material-ui/TextField';
 
+import { withStyles } from 'material-ui/styles';
 import CenterView from 'Components/global/CenterView'
+
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing.unit * 2,
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+});
 
 @connect(state => ({
     isLoading: state.login.isLoading,
@@ -34,37 +48,45 @@ class Login extends React.Component {
     };
 
     render() {
+
+
         return (
-            <Container className="App">
-                <br/>
-                <CenterView>
-                    <Logo/>
-                </CenterView>
-                <CenterView>
-                    <InputGroup>
-                        <Input onChange={(event) => this.state.email = event.target.value} placeholder="Email"/>
-                    </InputGroup>
-                </CenterView>
-                <br/>
-                <CenterView>
-                    <InputGroup>
-                        <Input type="password" onChange={(event) => this.state.password = event.target.value}
-                               placeholder="Password"/>
-                    </InputGroup>
-                </CenterView>
-                <br/>
-                <CenterView>
-                    <Button color="primary" onClick={this.login} block>Авторизация</Button>
-                </CenterView>
-                <CenterView>
+            <Grid container spacing={16} className="App">
+
+
+     <Logo/>
+
+
+ <TextField
+          required
+          type="email-input"
+          id="email"
+          label="Email"
+          margin="normal"
+          onChange={(event) => this.state.email = event.target.value}
+        />
+
+ <TextField
+  required
+          id="password-input"
+          label="Password"
+          type="password"
+          autoComplete="current-password"
+          margin="normal"
+          onChange={(event) => this.state.password = event.target.value}
+        />
+
+
+
+                    <Button variant="raised" color="primary" onClick={this.login} block>Авторизация</Button>
+
                     <div className="text-center">
                         AuthError: {this.props.authError}
-                    </div>
-                </CenterView>
-                <CenterView>
-                    <Button color="info" onClick={this.handleRegistrationClick} block>Регистрация</Button>
-                </CenterView>
-            </Container>
+                        </div>
+
+                    <Button variant="raised" color="secondary" onClick={this.handleRegistrationClick} block>Регистрация</Button>
+
+            </Grid>
         );
     }
 }
