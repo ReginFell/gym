@@ -6,6 +6,7 @@ import {login} from "Actions/login/LoginActions";
 import Button from 'material-ui/Button';
 import Grid from 'material-ui/Grid';
 import TextField from 'material-ui/TextField';
+import Paper from 'material-ui/Paper';
 
 import { withStyles } from 'material-ui/styles';
 import CenterView from 'Components/global/CenterView'
@@ -21,6 +22,7 @@ const styles = theme => ({
   },
 });
 
+@withStyles(styles)
 @connect(state => ({
     isLoading: state.login.isLoading,
     authError: state.login.authError
@@ -48,11 +50,14 @@ class Login extends React.Component {
     };
 
     render() {
-
+ const { classes } = this.props;
 
         return (
-            <Grid container spacing={16} className="App">
 
+
+            <Grid container spacing={16} className="App">
+<Grid item xs>
+          <Paper className={classes.paper}>xs</Paper>
 
      <Logo/>
 
@@ -86,7 +91,7 @@ class Login extends React.Component {
 
                     <Button variant="raised" color="secondary" onClick={this.handleRegistrationClick} block>Регистрация</Button>
 
-            </Grid>
+            </Grid></Grid>
         );
     }
 }
