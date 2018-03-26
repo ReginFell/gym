@@ -8,18 +8,23 @@ import Grid from 'material-ui/Grid';
 import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 
-import { withStyles } from 'material-ui/styles';
-import CenterView from 'Components/global/CenterView'
+import {withStyles} from 'material-ui/styles';
 
 const styles = theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing.unit * 2,
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
+    root: {
+        flexGrow: 1,
+
+        'justify-content': 'center'
+    },
+    container: {
+        'justify-content': 'center',
+        'align-items': 'center',
+
+    },
+    paper: {
+        padding: theme.spacing.unit * 2,
+
+    },
 });
 
 @withStyles(styles)
@@ -38,6 +43,7 @@ class Login extends React.Component {
         };
 
         this.login = this.login.bind(this);
+
         this.handleRegistrationClick = this.handleRegistrationClick.bind(this);
     }
 
@@ -50,50 +56,47 @@ class Login extends React.Component {
     };
 
     render() {
- const { classes } = this.props;
+        const {classes} = this.props;
 
         return (
+            <Grid container spacing={8} className={classes.root}>
+                <Grid item xs={12} md={6}>
+                    <Paper className={classes.paper}>
+                        <Grid container className={classes.container} direction='column'>
 
+                            <Grid item xs={12} md={12}>
+                                <Logo height={250}/>
+                            </Grid>
 
-            <Grid container spacing={16} className="App">
-<Grid item xs>
-          <Paper className={classes.paper}>xs</Paper>
+                            <Grid item xs={12} md={12}>
+                                <TextField required type="email-input" id="email" label="Email" margin="normal"
+                                           onChange={(event) => this.state.email = event.target.value}/>
+                            </Grid>
+                            <Grid item xs={12} md={12}>
+                                <TextField required id="password-input" label="Password" type="password"
+                                           autoComplete="current-password" margin="normal"
+                                           onChange={(event) => this.state.password = event.target.value}/>
+                            </Grid>
+                            <Grid item xs={12} md={12}>
+                                <Button variant="raised" color="primary" onClick={this.login}>Авторизация</Button>
+                            </Grid>
 
-     <Logo/>
+                            <Grid item xs={12} md={12}>
+                                AuthError: {this.props.authError}
+                            </Grid>
 
-
- <TextField
-          required
-          type="email-input"
-          id="email"
-          label="Email"
-          margin="normal"
-          onChange={(event) => this.state.email = event.target.value}
-        />
-
- <TextField
-  required
-          id="password-input"
-          label="Password"
-          type="password"
-          autoComplete="current-password"
-          margin="normal"
-          onChange={(event) => this.state.password = event.target.value}
-        />
-
-
-
-                    <Button variant="raised" color="primary" onClick={this.login} block>Авторизация</Button>
-
-                    <div className="text-center">
-                        AuthError: {this.props.authError}
-                        </div>
-
-                    <Button variant="raised" color="secondary" onClick={this.handleRegistrationClick} block>Регистрация</Button>
-
-            </Grid></Grid>
+                            <Grid item xs={12} md={12}>
+                                <Button variant="raised" color="secondary"
+                                        onClick={this.handleRegistrationClick}>Регистрация</Button>
+                            </Grid>
+                        </Grid>
+                    </Paper>
+                </Grid>
+            </Grid>
         );
     }
 }
 
 export default Login;
+
+
