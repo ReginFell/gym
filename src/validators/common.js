@@ -11,10 +11,4 @@ function validatePasswordMatch(password, passwordConfirm) {
     return password === passwordConfirm;
 }
 
-
-function validateUsername(username) {
-    return String(username).length >= 6;
-}
-
-
-module.exports = {validateEmail, validatePassword, validateUsername, validatePasswordMatch};
+module.exports = {validateEmail, validatePassword, validatePasswordMatch};

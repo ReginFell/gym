@@ -1,12 +1,28 @@
+const webpack = require('webpack');
+const path = require('path');
+
 module.exports = {
-    entry: './app.js',
-    mode: 'production',
+    entry: [
+        'webpack-hot-middleware/client?quiet=true',
+        'react-hot-loader/patch',
+        './src/App.js'
+    ],
+    mode: 'development',
     output: {
         filename: 'bundle.js',
-        path: __dirname
+        path: __dirname + "/public"
     },
     resolve: {
-        alias: {},
+        alias: {
+            Containers: path.resolve(__dirname, 'src/containers/'),
+            Resources: path.resolve(__dirname, 'src/resources/'),
+            Components: path.resolve(__dirname, 'src/components/'),
+            Reducers: path.resolve(__dirname, 'src/reducers/'),
+            Validators: path.resolve(__dirname, 'src/validators/'),
+            Constants: path.resolve(__dirname, 'src/constants/'),
+            Actions: path.resolve(__dirname, 'src/actions/'),
+            Api: path.resolve(__dirname, 'src/api/'),
+        },
         extensions: ['.js', '.jsx']
     },
     module: {
@@ -14,19 +30,33 @@ module.exports = {
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
+                query: {
+                    plugins: ['babel-plugin-transform-decorators-legacy', 'babel-plugin-transform-decorators'],
+                    presets: ['es2015', 'react']
+                },
+
                 exclude: /node_modules/
-            },
-            {
-                test: /\.vue$/,
-                exclude: /(node_modules|bower_components)/,
+            }, {
+                test: /\.scss$/,
+                loaders: ['style-loader', 'css-loader', 'sass-loader'],
+            }, {
+                test: /\.css$/,
+                loaders: ['style-loader', 'css-loader'],
+            }, {
+                test: /\.nsvg$/,
+                use: ['react-svg-loader']
+            }, {
+                test: /\.svg/,
                 use: {
-                    loader: 'vue-loader'
+                    loader: 'svg-url-loader',
+                    options: {}
                 }
-            },
-            {
-                test: /\.svg$/,
-                loader: 'vue-svg-loader'
             }
         ]
-    },
+    }, plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ],
+    devServer: {
+        contentBase: "./public"
+    }
 };
