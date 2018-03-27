@@ -1,5 +1,3 @@
-import "bootstrap/scss/bootstrap.scss"
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Route, Switch} from 'react-router-dom';

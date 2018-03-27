@@ -1,21 +1,21 @@
-import {TOKEN_DOES_NOT_EXIST, TOKEN_EXISTS} from "Constants/ActionTypes";
+import {START_LOADING, STOP_LOADING} from "Constants/ActionTypes";
 
 const initialState = {
-    isLoading: true,
+    isLoading: false,
     token: null,
 };
 
-export default (state = initialState, {type, payload}) => {
+export default (state = initialState, {type}) => {
     switch (type) {
-        case TOKEN_EXISTS:
+        case START_LOADING:
             return {
-                isLoading: false,
-                token: payload
+                isLoading: true,
+                token: state.token
             };
-        case TOKEN_DOES_NOT_EXIST:
+        case STOP_LOADING:
             return {
                 isLoading: false,
-                token: null
+                token: state.token
             };
         default:
             return state;
