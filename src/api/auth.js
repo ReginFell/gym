@@ -21,6 +21,25 @@ const signIn = (email, password, platform = 'web') => {
     );
 };
 
+const registration = (email, password, platform = 'web') => {
+    const obj = {
+        email: email,
+        password: password,
+        device_platform: platform,
+    };
+    console.log(obj);
+    return axios.post(
+        `${host}v1/auth/registration`,
+        obj,
+        {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            },
+        },
+    );
+};
+
 export default {
-    signIn,
+    signIn, registration
 };

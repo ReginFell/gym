@@ -5,10 +5,9 @@ import './Login.css';
 import {login} from "Actions/login/LoginActions";
 import Button from 'material-ui/Button';
 import Grid from 'material-ui/Grid';
-import {CircularProgress} from 'material-ui/Progress';
-import Input, {InputLabel} from 'material-ui/Input';
-import {FormControl, FormHelperText} from 'material-ui/Form';
 import Paper from 'material-ui/Paper';
+import TextInputField from 'Components/global/TextInputField'
+import Progress from 'Components/global/Progress'
 
 import {withStyles} from 'material-ui/styles';
 
@@ -45,10 +44,28 @@ class Login extends React.Component {
         };
 
         this.login = this.login.bind(this);
+        this.onPasswordChanged = this.onPasswordChanged.bind(this);
+        this.onEmailChanged = this.onEmailChanged.bind(this);
     }
 
     login() {
         this.props.login(this.state.email, this.state.password);
+    }
+
+    onEmailChanged(value) {
+
+        this.setState(state => ({
+            email: value,
+            password: state.password
+        }))
+    }
+
+    onPasswordChanged(value) {
+
+        this.setState((state) => ({
+            email: state.email,
+            password: value
+        }))
     }
 
     render() {
@@ -65,40 +82,35 @@ class Login extends React.Component {
                             </Grid>
 
                             <Grid item>
-                                <FormControl error={this.props.emailValidationError}>
-                                    <InputLabel required>Email</InputLabel>
-                                    <Input
-                                        type="email-input"
-                                        id="email"
-                                        fullWidth
-                                        label="Email"
-                                        margin="dense"
-                                        onChange={(event) => this.state.email = event.target.value}/>
-                                    <FormHelperText>{this.props.emailValidationError}</FormHelperText>
-                                </FormControl>
+                                <TextInputField
+                                    type="email-input"
+                                    id="email"
+                                    fullWidth
+                                    label="Email"
+                                    onChange={this.onEmailChanged}
+                                    value={this.state.email}
+                                    error={this.props.emailValidationError}/>
                             </Grid>
                             <Grid>
-                                <FormControl error={this.props.passwordValidationError}>
-                                    <InputLabel required>Password</InputLabel>
-                                    <Input
-                                        id="password-input"
-                                        label="Password"
-                                        type="password"
-                                        autoComplete="current-password"
-                                        margin="none"
-                                        onChange={(event) => this.state.password = event.target.value}/>
-                                    <FormHelperText>{this.props.passwordValidationError}</FormHelperText>
-                                </FormControl>
+                                <TextInputField
+                                    id="password-input"
+                                    label="Password"
+                                    type="password"
+                                    autoComplete="current-password"
+                                    onChange={this.onPasswordChanged}
+                                    value={this.state.password}
+                                    error={this.props.passwordValidationError}/>
                             </Grid>
+
                             <Grid item>
                                 <Button variant="raised" color="primary" onClick={this.login}>Авторизация</Button>
                             </Grid>
 
-                            {this.props.isLoading ?
-                                <Grid item>
-                                    <CircularProgress thickness={7}/>
-                                </Grid> : null
-                            }
+
+                            <Grid item>
+                                <Progress isLoading={this.props.isLoading}/>
+                            </Grid>
+
 
                             {this.props.authError ?
                                 <Grid item>
