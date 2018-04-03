@@ -27,12 +27,11 @@ const styles = theme => ({
 
 @withStyles(styles)
 @connect(state => ({
-        isLoading: state.app.isLoading,
-        authError: state.login.authError,
-        emailValidationError: state.login.emailValidationError,
-        passwordValidationError: state.login.passwordValidationError
-    }),
-    {login: login})
+    isLoading: state.app.isLoading,
+    authError: state.login.authError,
+    emailValidationError: state.login.emailValidationError,
+    passwordValidationError: state.login.passwordValidationError
+}), {login: login})
 class Login extends React.Component {
 
     constructor(props) {
@@ -121,7 +120,7 @@ class Login extends React.Component {
 
                             <Grid item>
                                 <Button variant="raised" color="secondary"
-                                        onClick={() => this.props.history.push('/registration')}>Регистрация</Button>
+                                        onClick={() => this.props.history.push('/signup')}>Регистрация</Button>
                             </Grid>
                         </Grid>
                     </Paper>
