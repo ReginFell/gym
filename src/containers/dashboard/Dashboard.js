@@ -1,9 +1,21 @@
 import React from 'react';
 import {connect} from 'react-redux'
 
-import {Button} from 'reactstrap';
+import Grid from 'material-ui/Grid';
 import {logout} from "Actions/dashboard/DashboardActions";
+import Header from "Components/global/Header"
 
+import {withStyles} from 'material-ui/styles';
+
+const styles = theme => ({
+    container: {
+        display: 'flex',
+        width: '100%',
+        justifyContent: 'center'
+    }
+});
+
+@withStyles(styles)
 @connect(null, {logout: logout})
 class Dashboard extends React.Component {
 
@@ -18,7 +30,12 @@ class Dashboard extends React.Component {
     }
 
     render() {
-        return <Button onClick={this.logout}> Logout </Button>
+        const {classes} = this.props;
+
+        return <Grid container className={classes.container} spacing={0}>
+            <Header/>
+
+        </Grid>
     }
 }
 

@@ -22,6 +22,7 @@ module.exports = {
             Constants: path.resolve(__dirname, 'src/constants/'),
             Actions: path.resolve(__dirname, 'src/actions/'),
             Api: path.resolve(__dirname, 'src/api/'),
+            Styles: path.resolve(__dirname, 'src/styles/'),
         },
         extensions: ['.js', '.jsx']
     },

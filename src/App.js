@@ -9,12 +9,15 @@ import {createStore, applyMiddleware} from 'redux';
 
 import {composeWithDevTools} from 'redux-devtools-extension';
 
+import {MuiThemeProvider} from 'material-ui/styles';
 import Login from 'Containers/login/Login';
 import Home from 'Containers/Home';
 import Registration from 'Containers/registration/Registration';
 import Dashboard from 'Containers/dashboard/Dashboard';
 
 import reducers from 'Reducers/index'
+
+import theme from 'Styles/Theme';
 
 const history = createHistory();
 const browserMiddleware = routerMiddleware(history);
@@ -23,14 +26,16 @@ const store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk, b
 
 ReactDOM.render(
     <Provider store={store}>
-        <ConnectedRouter history={history}>
-            <Switch>
-                <Route exact path="/" component={Home}/>
-                <Route exact path="/signin" component={Login}/>
-                <Route exact path="/signup" component={Registration}/>
-                <Route exact path="/dashboard" component={Dashboard}/>
-            </Switch>
-        </ConnectedRouter>
+        <MuiThemeProvider theme={theme}>
+            <ConnectedRouter history={history}>
+                <Switch>
+                    <Route exact path="/" component={Home}/>
+                    <Route exact path="/signin" component={Login}/>
+                    <Route exact path="/signup" component={Registration}/>
+                    <Route exact path="/dashboard" component={Dashboard}/>
+                </Switch>
+            </ConnectedRouter>
+        </MuiThemeProvider>
     </Provider>,
     document.getElementById('app')
 );

@@ -1,4 +1,4 @@
-import {START_LOADING, STOP_LOADING} from "Constants/ActionTypes";
+import {LOG_OUT, START_LOADING, STOP_LOADING} from "Constants/ActionTypes";
 
 const initialState = {
     isLoading: false,
@@ -16,6 +16,10 @@ export default (state = initialState, {type}) => {
             return {
                 isLoading: false,
                 token: state.token
+            };
+        case LOG_OUT:
+            return {
+                token: null
             };
         default:
             return state;

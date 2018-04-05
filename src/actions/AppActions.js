@@ -1,3 +1,5 @@
+import {LOG_OUT} from "Constants/ActionTypes";
+
 import {replace} from 'react-router-redux'
 
 export const isLogged = () => (dispatch) => {
@@ -7,4 +9,12 @@ export const isLogged = () => (dispatch) => {
     } else {
         dispatch(replace('/signin'));
     }
+};
+
+export const logout = () => (dispatch) => {
+    localStorage.removeItem('token');
+    dispatch({
+        type: LOG_OUT
+    });
+    dispatch(replace('/'))
 };
