@@ -25,7 +25,6 @@ export const login = (email, password) => dispatch => {
                 localStorage.setItem('token', res.data.token);
 
                 dispatch({type: types.STOP_LOADING});
-                dispatch({type: types.LOGIN_SUCCESS, payload: res.data.token});
                 dispatch(push('/dashboard'))
             })
             .catch((error) => {

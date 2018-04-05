@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux'
 import {withStyles} from "material-ui/styles/index";
 import {registration} from "Actions/registration/RegistrationActions";
+import Logo from 'Resources/logo.nsvg';
 import Button from 'material-ui/Button';
 import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
@@ -24,18 +25,16 @@ const styles = theme => ({
 
 @withStyles(styles)
 @connect(state => ({
-        isLoading: state.app.isLoading,
-        registrationError: state.registration.registrationError,
-        emailValidationError: state.registration.emailValidationError,
-        passwordValidationError: state.registration.passwordValidationError,
-        passwordMatchValidationError: state.registration.passwordMatchValidationError,
-    }),
-    {registration: registration})
+    isLoading: state.app.isLoading,
+    registrationError: state.registration.registrationError,
+    emailValidationError: state.registration.emailValidationError,
+    passwordValidationError: state.registration.passwordValidationError,
+    passwordMatchValidationError: state.registration.passwordMatchValidationError,
+}), {registration: registration})
 class Registration extends React.Component {
 
     constructor(props) {
         super(props);
-
 
         this.state = {
             email: '',
@@ -47,11 +46,10 @@ class Registration extends React.Component {
         this.onEmailChanged = this.onEmailChanged.bind(this);
         this.onPasswordChanged = this.onPasswordChanged.bind(this);
         this.onPasswordConfirmationChanged = this.onPasswordConfirmationChanged.bind(this);
-
     }
 
     register() {
-        this.props.register(this.state.email, this.state.password, this.state.passwordConfirmation);
+        this.props.registration(this.state.email, this.state.password, this.state.passwordConfirmation);
     }
 
     onEmailChanged(value) {
@@ -88,7 +86,7 @@ class Registration extends React.Component {
                         <Grid container className={classes.container} direction='column'>
 
                             <Grid>
-
+                                <Logo height={250} width={400}/>
                             </Grid>
 
                             <Grid item>
@@ -125,9 +123,8 @@ class Registration extends React.Component {
                             </Grid>
 
                             <Grid item>
-                                <Button variant="raised" color="primary" onClick={this.register}>Регистрация</Button>
+                                <Button variant="raised" color="secondary" onClick={this.register}>Регистрация</Button>
                             </Grid>
-
 
                             <Grid item>
                                 <Progress isLoading={this.props.isLoading}/>

@@ -1,6 +1,5 @@
 import {
     LOADING,
-    LOGIN_SUCCESS,
     LOGIN_ERROR,
     CLEAR_FORM_ERRORS,
     EMAIL_VALIDATION_FAILED,
@@ -32,10 +31,6 @@ export default (state = initialState, {type, payload}) => {
                 authError: state.authError,
                 emailValidationError: state.emailValidationError,
                 passwordValidationError: "Пароль должен содержать как минимум 6 цифр"
-            };
-        case LOGIN_SUCCESS:
-            return {
-                authError: ""
             };
         case LOGIN_ERROR:
             return {

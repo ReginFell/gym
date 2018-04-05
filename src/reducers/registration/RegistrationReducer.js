@@ -44,10 +44,6 @@ export default (state = initialState, {type, payload}) => {
                 passwordValidationError: state.passwordValidationError,
                 passwordMatchValidationError: "Пароли не совпадают"
             };
-        case REGISTRATION_SUCCESS:
-            return {
-                registrationError: ""
-            };
         case REGISTRATION_ERROR:
             return {
                 registrationError: payload

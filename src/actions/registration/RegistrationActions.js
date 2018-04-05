@@ -30,7 +30,6 @@ export const registration = (email, password, confirmationPassword) => dispatch 
                 localStorage.setItem('token', res.data.token);
 
                 dispatch({type: types.STOP_LOADING});
-                dispatch({type: types.REGISTRATION_SUCCESS, payload: res.data.token});
                 dispatch(push('/dashboard'))
             })
             .catch((error) => {
