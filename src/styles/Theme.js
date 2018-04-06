@@ -1,13 +1,12 @@
 import {createMuiTheme} from 'material-ui/styles';
 import blue from 'material-ui/colors/blue';
-import white from 'material-ui/colors/blue';
 
 export default createMuiTheme({
     palette: {
         primary: blue,
     },
     text: {
-        primary: white
+        primary: '#ffffff'
     },
     typography: {
         fontFamily:
