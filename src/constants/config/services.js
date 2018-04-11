@@ -1,0 +1,1 @@
+export const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY || '296610349585-tp8ja9klu1lf7n15pefetn76hmb5o49d.apps.googleusercontent.com';

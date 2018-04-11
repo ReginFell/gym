@@ -4,22 +4,30 @@ import {withStyles} from "material-ui/styles/index";
 import {registration} from "Actions/registration/RegistrationActions";
 import Logo from 'Resources/logo.nsvg';
 import Button from 'material-ui/Button';
-import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
 import TextInputField from 'Components/global/TextInputField'
 import Progress from 'Components/global/Progress'
 
 const styles = theme => ({
     root: {
-        width: '100%',
-        margin: '0'
-    },
-    container: {
-        'justify-content': 'center',
-        'align-items': 'center'
+        display: 'flex',
+        justifyContent: 'center',
     },
     paper: {
         padding: theme.spacing.unit * 2,
+        display: 'flex',
+        width: 500,
+        alignItems: 'center',
+        flexDirection: 'column',
+    },
+    logo: {
+        height: 300
+    },
+    buttons: {
+        display: 'flex',
+    },
+    button: {
+        margin: theme.spacing.unit * 2,
     },
 });
 
@@ -80,65 +88,48 @@ class Registration extends React.Component {
         const {classes} = this.props;
 
         return (
-            <Grid container spacing={8} className={classes.root} justify="center">
-                <Grid>
-                    <Paper className={classes.paper}>
-                        <Grid container className={classes.container} direction='column'>
+            <div className={classes.root}>
+                <Paper className={classes.paper}>
+                    <Logo className={classes.logo}/>
+                    <TextInputField
+                        type="email-input"
+                        id="email"
+                        fullWidth
+                        label="Email"
+                        onChange={this.onEmailChanged}
+                        value={this.state.email}
+                        error={this.props.emailValidationError}/>
 
-                            <Grid>
-                                <Logo height={250} width={400}/>
-                            </Grid>
+                    <TextInputField
+                        id="password-input"
+                        label="Password"
+                        type="password"
+                        autoComplete="current-password"
+                        onChange={this.onPasswordChanged}
+                        value={this.state.password}
+                        error={this.props.passwordValidationError}/>
 
-                            <Grid item>
-                                <TextInputField
-                                    type="email-input"
-                                    id="email"
-                                    fullWidth
-                                    label="Email"
-                                    onChange={this.onEmailChanged}
-                                    value={this.state.email}
-                                    error={this.props.emailValidationError}/>
-                            </Grid>
+                    <TextInputField
+                        id="password-repeat-input"
+                        label="Repeat Password"
+                        type="password"
+                        autoComplete="current-password"
+                        onChange={this.onPasswordConfirmationChanged}
+                        value={this.state.passwordConfirmation}
+                        error={this.props.passwordMatchValidationError}/>
 
-                            <Grid item>
-                                <TextInputField
-                                    id="password-input"
-                                    label="Password"
-                                    type="password"
-                                    autoComplete="current-password"
-                                    onChange={this.onPasswordChanged}
-                                    value={this.state.password}
-                                    error={this.props.passwordValidationError}/>
-                            </Grid>
+                    <Button className={classes.button} variant="raised" color="secondary"
+                            onClick={this.register}>Регистрация</Button>
 
-                            <Grid item>
-                                <TextInputField
-                                    id="password-repeat-input"
-                                    label="Repeat Password"
-                                    type="password"
-                                    autoComplete="current-password"
-                                    onChange={this.onPasswordConfirmationChanged}
-                                    value={this.state.passwordConfirmation}
-                                    error={this.props.passwordMatchValidationError}/>
-                            </Grid>
+                    <Progress isLoading={this.props.isLoading}/>
 
-                            <Grid item>
-                                <Button variant="raised" color="secondary" onClick={this.register}>Регистрация</Button>
-                            </Grid>
+                    {this.props.registrationError ?
+                        <div>Registration Error: {this.props.registrationError}</div> : null
+                    }
 
-                            <Grid item>
-                                <Progress isLoading={this.props.isLoading}/>
-                            </Grid>
+                </Paper>
 
-                            {this.props.registrationError ?
-                                <Grid item>
-                                    <div>Registration Error: {this.props.registrationError}</div>
-                                </Grid> : null
-                            }
-                        </Grid>
-                    </Paper>
-                </Grid>
-            </Grid>
+            </div>
         );
     }
 }

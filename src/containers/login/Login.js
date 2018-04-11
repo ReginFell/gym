@@ -8,6 +8,8 @@ import Paper from 'material-ui/Paper';
 import TextInputField from 'Components/global/TextInputField'
 import Typography from 'material-ui/Typography';
 import Progress from 'Components/global/Progress'
+import GoogleLogin from 'react-google-login';
+import {GOOGLE_API_KEY} from "Constants/config/services";
 
 import {withStyles} from 'material-ui/styles';
 
@@ -26,8 +28,9 @@ const styles = theme => ({
     logo: {
         height: 300
     },
-    buttons: {
+    social_container: {
         display: 'flex',
+        alignItems: 'center',
     },
     button: {
         margin: theme.spacing.unit * 2,
@@ -99,6 +102,19 @@ class Login extends React.Component {
                         onChange={this.onPasswordChanged}
                         value={this.state.password}
                         error={this.props.passwordValidationError}/>
+
+
+                    <div className={classes.social_container}>
+                        <GoogleLogin
+                            clientId={GOOGLE_API_KEY}
+                            buttonText="Google Sign In"
+                            onSuccess={(response) => {
+                                console.log(response)
+                            }}
+                            onFailure={(error) => {
+                                console.log(error)
+                            }}/>
+                    </div>
 
                     <Button className={classes.button} variant="raised" color="primary"
                             onClick={this.login}>Авторизация</Button>
