@@ -18,7 +18,7 @@ app.get('/*', function (_, res) {
     res.sendFile(path.join(__dirname, '/public/index.html'))
 });
 
-let port = process.env.PORT || 5002;
+let port = process.env.PORT || 5001;
 app.listen(port, () => {
     console.log('Listening on port ' + port);
 });

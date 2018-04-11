@@ -4,24 +4,33 @@ import Logo from 'Resources/logo.nsvg';
 import './Login.css';
 import {login} from "Actions/login/LoginActions";
 import Button from 'material-ui/Button';
-import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
 import TextInputField from 'Components/global/TextInputField'
+import Typography from 'material-ui/Typography';
 import Progress from 'Components/global/Progress'
 
 import {withStyles} from 'material-ui/styles';
 
 const styles = theme => ({
     root: {
-        width: '100%',
-        margin: '0'
-    },
-    container: {
-        'justify-content': 'center',
-        'align-items': 'center'
+        display: 'flex',
+        justifyContent: 'center',
     },
     paper: {
         padding: theme.spacing.unit * 2,
+        display: 'flex',
+        width: 500,
+        alignItems: 'center',
+        flexDirection: 'column',
+    },
+    logo: {
+        height: 300
+    },
+    buttons: {
+        display: 'flex',
+    },
+    button: {
+        margin: theme.spacing.unit * 2,
     },
 });
 
@@ -71,61 +80,38 @@ class Login extends React.Component {
         const {classes} = this.props;
 
         return (
-            <Grid container spacing={8} className={classes.root} justify="center">
-                <Grid>
-                    <Paper className={classes.paper}>
-                        <Grid container className={classes.container} direction='column'>
+            <div className={classes.root}>
+                <Paper className={classes.paper}>
+                    <Logo className={classes.logo}/>
+                    <TextInputField
+                        type="email-input"
+                        id="email"
+                        label="Email"
+                        onChange={this.onEmailChanged}
+                        value={this.state.email}
+                        error={this.props.emailValidationError}/>
 
-                            <Grid>
-                                <Logo height={250} width={400}/>
-                            </Grid>
+                    <TextInputField
+                        id="password-input"
+                        label="Password"
+                        type="password"
+                        autoComplete="current-password"
+                        onChange={this.onPasswordChanged}
+                        value={this.state.password}
+                        error={this.props.passwordValidationError}/>
 
-                            <Grid item>
-                                <TextInputField
-                                    type="email-input"
-                                    id="email"
-                                    fullWidth
-                                    label="Email"
-                                    onChange={this.onEmailChanged}
-                                    value={this.state.email}
-                                    error={this.props.emailValidationError}/>
-                            </Grid>
-                            <Grid>
-                                <TextInputField
-                                    id="password-input"
-                                    label="Password"
-                                    type="password"
-                                    autoComplete="current-password"
-                                    onChange={this.onPasswordChanged}
-                                    value={this.state.password}
-                                    error={this.props.passwordValidationError}/>
-                            </Grid>
+                    <Button className={classes.button} variant="raised" color="primary"
+                            onClick={this.login}>Авторизация</Button>
 
-                            <Grid item>
-                                <Button variant="raised" color="primary" onClick={this.login}>Авторизация</Button>
-                            </Grid>
+                    <Progress isLoading={this.props.isLoading}/>
 
+                    <Button className={classes.button}
+                            variant="raised" color="secondary"
+                            onClick={() => this.props.history.push('/signup')}>Регистрация</Button>
 
-                            <Grid item>
-                                <Progress isLoading={this.props.isLoading}/>
-                            </Grid>
-
-
-                            {this.props.authError ?
-                                <Grid item>
-                                    <div>Auth Error: {this.props.authError}</div>
-                                </Grid> : null
-                            }
-
-
-                            <Grid item>
-                                <Button variant="raised" color="secondary"
-                                        onClick={() => this.props.history.push('/signup')}>Регистрация</Button>
-                            </Grid>
-                        </Grid>
-                    </Paper>
-                </Grid>
-            </Grid>
+                    {this.props.authError ? <div>Auth Error: {this.props.authError}</div> : null}
+                </Paper>
+            </div>
         );
     }
 }
