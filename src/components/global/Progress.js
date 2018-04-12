@@ -9,7 +9,7 @@ class Progress extends React.Component {
     }
 
     render() {
-        return this.props.isLoading ? <CircularProgress thickness={7}/> : null
+        return this.props.isLoading ? <CircularProgress thickness={4}/> : null
     }
 }
 
