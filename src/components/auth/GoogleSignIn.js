@@ -4,6 +4,7 @@ import GoogleIcon from 'Resources/auth/google-plus.svg'
 
 import { withStyles } from 'material-ui/styles'
 import { GOOGLE_API_KEY } from 'Constants/config/services'
+import PropTypes from 'prop-types'
 
 const styles = () => ({
   buttonGoogle: {
@@ -33,18 +34,14 @@ class GoogleSignIn extends React.PureComponent{
   }
 
   render () {
-    let {classes} = this.props
+    const {onSuccess, onFailure, classes} = this.props
 
     return (
       <GoogleLogin
         clientId={GOOGLE_API_KEY}
         className={classes.buttonGoogle}
-        onSuccess={response => {
-          console.log(response)
-        }}
-        onFailure={error => {
-          console.log(error)
-        }}>
+        onSuccess={onSuccess}
+        onFailure={onFailure}>
         <GoogleIcon style={{
           width: 24,
           marginRight: 5
@@ -53,6 +50,11 @@ class GoogleSignIn extends React.PureComponent{
       </GoogleLogin>
     )
   }
+}
+
+GoogleSignIn.propTypes = {
+  onSuccess: PropTypes.func.isRequired,
+  onFailure: PropTypes.func,
 }
 
 export default GoogleSignIn

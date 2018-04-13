@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Logo from 'Resources/logo.svg'
-import { login } from 'Actions/login/LoginActions'
+import { login, loginByGoogle } from 'Actions/login/LoginActions'
 import Button from 'material-ui/Button'
 import Paper from 'material-ui/Paper'
 import Typography from 'material-ui/Typography'
@@ -45,7 +45,10 @@ const styles = theme => ({
     emailValidationError: state.login.emailValidationError,
     passwordValidationError: state.login.passwordValidationError
   }),
-  {login: login}
+  {
+    login: login,
+    loginByGoogle: loginByGoogle
+  }
 )
 class Login extends React.Component{
   constructor (props) {
@@ -57,12 +60,17 @@ class Login extends React.Component{
     }
 
     this.login = this.login.bind(this)
+    this.loginByGoogle = this.loginByGoogle.bind(this)
     this.onPasswordChanged = this.onPasswordChanged.bind(this)
     this.onEmailChanged = this.onEmailChanged.bind(this)
   }
 
   login () {
     this.props.login(this.state.email, this.state.password)
+  }
+
+  loginByGoogle (token) {
+    this.props.loginByGoogle(token)
   }
 
   onEmailChanged (value) {
@@ -136,7 +144,7 @@ class Login extends React.Component{
           </div>
 
           <div className={classes.social_container}>
-            <GoogleSignIn/>
+            <GoogleSignIn onSuccess={(response => {this.loginByGoogle(response)})}/>
             <FacebookSignIn/>
           </div>
 
