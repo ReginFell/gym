@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import Logo from 'Resources/logo.nsvg';
+import Logo from 'Resources/logo.svg';
 import Avatar from 'material-ui/Avatar';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography'

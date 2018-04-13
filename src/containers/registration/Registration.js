@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux'
 import {withStyles} from "material-ui/styles/index";
 import {registration} from "Actions/registration/RegistrationActions";
-import Logo from 'Resources/logo.nsvg';
+import Logo from 'Resources/logo.svg';
 import Button from 'material-ui/Button';
 import Paper from 'material-ui/Paper';
 import TextInputField from 'Components/global/TextInputField'

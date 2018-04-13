@@ -1,12 +1,15 @@
 import React from 'react'
 import GoogleLogin from 'react-google-login'
-import GoogleIcon from 'Resources/google-plus.nsvg'
+import GoogleIcon from 'Resources/auth/google-plus.svg'
 
 import { withStyles } from 'material-ui/styles'
 import { GOOGLE_API_KEY } from 'Constants/config/services'
 
 const styles = () => ({
-  btnGoogle: {
+  buttonGoogle: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     margin: 5,
     width: 165,
     height: 35,
@@ -35,7 +38,7 @@ class GoogleSignIn extends React.PureComponent{
     return (
       <GoogleLogin
         clientId={GOOGLE_API_KEY}
-        className={classes.btnGoogle}
+        className={classes.buttonGoogle}
         onSuccess={response => {
           console.log(response)
         }}
@@ -44,9 +47,7 @@ class GoogleSignIn extends React.PureComponent{
         }}>
         <GoogleIcon style={{
           width: 24,
-          height: 24,
-          marginLeft:
-            '5px'
+          marginRight: 5
         }}/>
         <span>Google Sign In</span>
       </GoogleLogin>

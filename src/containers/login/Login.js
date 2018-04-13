@@ -1,32 +1,32 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Logo from 'Resources/logo.nsvg'
+import Logo from 'Resources/logo.svg'
 import { login } from 'Actions/login/LoginActions'
 import Button from 'material-ui/Button'
 import Paper from 'material-ui/Paper'
 import Typography from 'material-ui/Typography'
 import TextInputField from 'Components/global/TextInputField'
 import Progress from 'Components/global/Progress'
-import GoogleSignIn from 'Components/global/GoogleSignIn'
+import GoogleSignIn from 'Components/auth/GoogleSignIn'
+import FacebookSignIn from 'Components/auth/FacebookSignIn'
 
 import { withStyles } from 'material-ui/styles'
 
 const styles = theme => ({
   root: {
-    padding: theme.spacing.unit * 2,
     display: 'flex',
     justifyContent: 'center'
   },
   paper: {
     padding: theme.spacing.unit * 2,
     display: 'flex',
-    width: 500,
+    width: 400,
     alignText: 'center',
     flexDirection: 'column'
   },
   social_container: {
     display: 'flex',
-    alignItems: 'center'
+    justifyContent: 'space-between'
   },
   button: {
     marginTop: theme.spacing.unit,
@@ -137,6 +137,7 @@ class Login extends React.Component{
 
           <div className={classes.social_container}>
             <GoogleSignIn/>
+            <FacebookSignIn/>
           </div>
 
           <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 16}}>

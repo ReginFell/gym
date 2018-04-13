@@ -7,7 +7,7 @@ module.exports = {
     'react-hot-loader/patch',
     './src/App.js',
   ],
-  mode: 'production',
+  mode: 'development',
   output: {
     filename: 'bundle.js',
     path: __dirname + '/public',
@@ -50,15 +50,8 @@ module.exports = {
         loaders: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.nsvg$/,
-        use: ['react-svg-loader'],
-      },
-      {
         test: /\.svg/,
-        use: {
-          loader: 'svg-url-loader',
-          options: {},
-        },
+        use: ['react-svg-loader'],
       },
     ],
   },
