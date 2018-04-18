@@ -148,7 +148,7 @@ class Login extends React.Component{
             <FacebookSignIn/>
           </div>
 
-          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 16}}>
+          <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center', margin: 16}}>
             <Typography>Ну, а если нет аккаунта, то может</Typography>
             <Button
               className={classes.registrationButton}
